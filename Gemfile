@@ -40,6 +40,9 @@ gem 'bootstrap', '~> 4.3.1'
 #Use FriendlyId to generate friendly slugs
 gem 'friendly_id', '~> 5.2.4'
 
+#Use Devise to user authentication
+gem 'devise', '~> 4.6.2'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

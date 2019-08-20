@@ -4,13 +4,13 @@
     <div class="form-group row">
         <label class="col-sm-2 col-form-label"><%= f.label :title, "Title: " %></label>
         <div class="col-sm-10">
-            <%= f.text_field :title, placeholder: "Type the post title here" %><br>
+            <%= f.text_field :title, maxlenght: 50, placeholder: "Type the post title here" %><br>
         </div>
     </div>
     <div class="form-group row">
         <label class="col-sm-2 col-form-label"><%= f.label :content, "Content: " %><br></label>
         <div class="col-sm-10">
-            <%= f.text_area :content, size: "50x20", placeholder: "Type the post text here" %><br>
+            <%= f.text_area :content, maxlenght: 500, size: "50x20", placeholder: "Type the post text here" %><br>
         </div>
     </div>
 

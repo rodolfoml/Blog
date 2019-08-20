@@ -33,7 +33,12 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 
 #Use Bootstrap
+gem 'bootstrap-sass', '~> 3.4.1'
+gem 'sassc-rails', '>= 2.1.0'
 gem 'bootstrap', '~> 4.3.1'
+
+#Use FriendlyId to generate friendly slugs
+gem 'friendly_id', '~> 5.2.4'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

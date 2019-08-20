@@ -1,0 +1,9 @@
+<% @comments.each do |comment| %>
+    <p><%= comment.content %></p>
+
+    <%= link_to "Edit", edit_comment_path(comment) %>
+    <%= link_to "Delete", comment, method: :delete, data: { confirm: "Are you sure?" } %>
+<% end %>
+<br><br>
+
+<%= link_to "Back", root_path %>

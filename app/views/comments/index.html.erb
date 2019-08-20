@@ -1,0 +1,6 @@
+<% @comments.each do |comment| %>
+    <h1><%= link_to content %></h1>
+    <p><%= comment.content %></p>
+<% end %>
+<br><br>
+<h1><%= link_to 'Make a comment', controller: "comments", action: "new" %></h1>

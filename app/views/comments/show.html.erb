@@ -1,9 +1,17 @@
-<% @comments.each do |comment| %>
-    <p><%= comment.content %></p>
+<div class="container">
+    <% @comments.each do |comment| %>
+        <div class="card bg-light">
+            
+            <div class="card-body">
+                <p><%= comment.content %></p>
+            </div>
 
-    <%= link_to "Edit", edit_comment_path(comment) %>
-    <%= link_to "Delete", comment, method: :delete, data: { confirm: "Are you sure?" } %>
-<% end %>
-<br><br>
-
-<%= link_to "Back", root_path %>
+            <div class="card-footer">
+                <%= link_to '<button class="btn btn-primary btn-secondary float-right">Edit</button>'.html_safe, edit_comment_path(comment) %>
+                <%= link_to '<button class="btn btn-primary btn-danger float-right">Delete</button>'.html_safe, comment, method: :delete, data: { confirm: "Are you sure?" } %>
+            </div>
+        </div>
+    <% end %>
+    <br><br>
+    <%= link_to '<button class="btn btn-primary btn-lg btn-block">Back</button>'.html_safe, root_path %>
+</div>

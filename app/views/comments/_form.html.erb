@@ -1,7 +1,14 @@
 <%= form_for(@comment) do |f| %>
-    <%= hidden_field_tag(:post_id, @comment.post_id) %>
-    <%= f.label :content %><br>
-    <%= f.text_area :content, size: "60x12", placeholder: "Type the comment here" %><br>
+    <%= render 'error_messages' %>
 
-    <%= f.submit %>
+    <%= hidden_field_tag(:post_id, @comment.post_id) %>
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label"><%= f.label :content, "Content: " %><br></label>
+        <div class="col-sm-10">
+            <%= f.text_area :content, size: "50x20", placeholder: "Type the post text here" %><br>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-lg float-right">Publish</button>
 <% end %>

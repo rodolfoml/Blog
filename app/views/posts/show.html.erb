@@ -1,8 +1,19 @@
-<h1><%= @post.title %></h1>
-<p><%= @post.content %></p>
+<div class="container">
+    <div class="card bg-light">
+        <div class="card-title">
+            <h1 class="display-3 m-5 p-2 text-center"><%= @post.title %></h1>
+        </div>        
+        
+        <div class="card-body">
+            <p><%= @post.content %></p>
+        </div>
 
-<%= link_to "Show Comments", controller: "comments", action: "show", post_id: @post.id%>
-
-<%= link_to "Edit", edit_post_path(@post) %>
-<%= link_to "Delete", @post, method: :delete, data: { confirm: "Are you sure?" } %>
-<%= link_to "Back", root_path %>
+        <div class="card-footer">
+            <%= link_to '<button class="btn btn-primary btn-info float-right">Comments</button>'.html_safe, controller: "comments", action: "show", post_id: @post.id%>
+            <%= link_to '<button class="btn btn-primary btn-secondary float-right">Edit</button>'.html_safe, edit_post_path(@post) %>
+            <%= link_to '<button class="btn btn-primary btn-danger float-right">Delete</button>'.html_safe, @post, method: :delete, data: { confirm: "Are you sure?" } %>
+        </div>
+    </div>
+    <br><br>
+    <%= link_to '<button class="btn btn-primary btn-lg btn-block">Back</button>'.html_safe, root_path %>
+</div>

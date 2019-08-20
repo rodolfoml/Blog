@@ -1,3 +1,13 @@
-<h1>Edit Post</h1>
-<%= render 'form' %>
-<%= link_to "Back", root_path %>
+<div class="container">
+    <div class="card bg-light">
+        <div class="card-title">
+            <h1 class="display-3 m-5 p-2 text-center">Edit Post</h1>
+        </div>        
+        
+        <div class="card-body">
+            <%= render 'form' %>
+        </div>
+   </div>
+   <br><br>
+    <%= link_to '<button class="btn btn-primary btn-lg btn-block">Back</button>'.html_safe, root_path %>
+</div>

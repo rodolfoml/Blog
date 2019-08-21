@@ -7,8 +7,13 @@
             </div>
 
             <div class="card-footer">
-                <%= link_to '<button class="btn btn-primary btn-secondary float-right">Edit</button>'.html_safe, edit_comment_path(comment) %>
-                <%= link_to '<button class="btn btn-primary btn-danger float-right">Delete</button>'.html_safe, comment, method: :delete, data: { confirm: "Are you sure?" } %>
+                <p class="float-left">Posted by: <strong><%= User.find(comment.user_id).email %></strong></p>
+                <% if user_signed_in? %>
+                    <% if current_user.id == comment.user_id %>
+                        <%= link_to '<button class="btn btn-primary btn-secondary float-right">Edit</button>'.html_safe, edit_comment_path(comment) %>
+                        <%= link_to '<button class="btn btn-primary btn-danger float-right">Delete</button>'.html_safe, comment, method: :delete, data: { confirm: "Are you sure?" } %>
+                    <% end %>
+                <% end %>
             </div>
         </div>
     <% end %>

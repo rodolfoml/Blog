@@ -7,11 +7,17 @@
             <div class="card-body">
                 <p class="text-justify"><%= post.content %></p>
             </div>
+            
             <div class="card-footer">
-                <p class="float-right"><%= link_to '<button class="btn btn-primary btn-sm ">Make a comment</button>'.html_safe, controller: "comments", action: "new", post_id: post.id %><p>
+                <p class="float-left">Posted by: <strong><%= User.find(post.user_id).email %></strong></p>
+                <% if user_signed_in? %>
+                    <p class="float-right"><%= link_to '<button class="btn btn-primary btn-sm ">Make a comment</button>'.html_safe, controller: "comments", action: "new", post_id: post.id %><p>
+                <% end %>   
             </div>
         </div>
     <% end %>
     <br><br>
-    <%= link_to '<button class="btn btn-primary btn-lg btn-block">Create a post</button>'.html_safe, controller: "posts", action: "new"%>
+    <% if user_signed_in? %>
+        <%= link_to '<button class="btn btn-primary btn-lg btn-block">Create a post</button>'.html_safe, controller: "posts", action: "new"%>
+    <% end %>
 </div>

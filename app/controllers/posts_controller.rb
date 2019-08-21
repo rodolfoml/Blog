@@ -14,7 +14,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
+    @post = Post.new(user_id: params[:user_id], content: params[:post][:content], title: params[:post][:title])
 
     if @post.save
       redirect_to @post, notice: 'The post was created!'
@@ -26,7 +26,7 @@ class PostsController < ApplicationController
   def edit; end
 
   def update
-    if @post.update(post_params)
+    if @post.update(content: params[:post][:content], title: params[:post][:title])
       redirect_to @post, notice: 'Update successful'
     else
       render 'edit'
@@ -39,10 +39,6 @@ class PostsController < ApplicationController
   end
 
   private
-
-  def post_params
-    params.require(:post).permit(:title, :content)
-  end
 
   def find_post
     @post = Post.friendly.find(params[:id])

@@ -1,0 +1,45 @@
+<div class="container">
+
+  <div class="card bg-light">
+  <div class="card-title">
+      <h1 class="display-3 m-5 p-2 text-center">Log in</h1>
+  </div>        
+
+  <div class="card-body">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="field">
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label"><%= f.label :email, "Email: " %><br></label>
+          <div class="col-sm-10">
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Type the email here" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label"><%= f.label :password, "Password: " %></label>
+          <div class="col-sm-10">
+              <%= f.password_field :password, autocomplete: "current-password", placeholder: "Type the password here" %>
+          </div>
+        </div>
+      </div>
+
+      <% if devise_mapping.rememberable? %>
+        <div class="field">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %>
+        </div>
+      <% end %>
+
+      <div class="actions">
+        <button type="submit" class="btn btn-primary btn-lg float-right">Log In</button>
+      </div>
+    <% end %>
+
+    <%= render "devise/shared/links" %>
+  </div>
+  </div>
+  <br><br>
+  <%= link_to '<button class="btn btn-primary btn-lg btn-block">Back</button>'.html_safe, root_path %>
+</div>

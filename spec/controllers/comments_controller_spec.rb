@@ -22,12 +22,12 @@ RSpec.describe 'Blog API', type: :request do
 
   describe 'POST /comments' do
     let!(:user) { create :user }
-    let!(:post) { create :post, user_id: user.id }
+    let!(:post1) { create :post, user_id: user.id }
 
     let(:post_params) do
       {
         user_id: user.id,
-        post_id: post.id,
+        post_id: post1.id,
         comment: {
           content: 'Content'
         }
@@ -38,7 +38,7 @@ RSpec.describe 'Blog API', type: :request do
       post '/comments', params: post_params
       puts response.body
 
-      get "/comments/#{post.slug}?post_id=#{post.id}"
+      get "/comments/#{post1.slug}?post_id=#{post1.id}"
 
       expect(response.body.include?(post_params[:comment][:content]))
     end

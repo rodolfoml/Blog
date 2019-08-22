@@ -3,7 +3,7 @@
 class Post < ApplicationRecord
   extend FriendlyId
   belongs_to :user
-  has_many :comments, dependent: :delete_all
+  has_many :comments, dependent: :destroy
 
   friendly_id :title, use: :slugged
 

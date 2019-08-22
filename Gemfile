@@ -48,6 +48,7 @@ gem 'rspec-rails', '~> 3.8'
 gem 'faker'
 gem 'factory_bot_rails'
 gem 'database_cleaner'
+gem 'shoulda-matchers'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

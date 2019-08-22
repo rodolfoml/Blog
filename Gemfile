@@ -49,6 +49,7 @@ gem 'faker'
 gem 'factory_bot_rails'
 gem 'database_cleaner'
 gem 'shoulda-matchers'
+gem 'capybara'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

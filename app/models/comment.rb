@@ -6,4 +6,6 @@ class Comment < ApplicationRecord
 
   validates :post_id, presence: true
   validates :content, length: { maximum: 250 }, presence: true
+
+  after_create_commit { CommentBroadcastJob.perform_now self }
 end

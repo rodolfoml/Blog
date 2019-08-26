@@ -2,7 +2,7 @@
     <% @posts.each do |post| %>
         <div class="card bg-light">
             <div class="card-title">
-                <h1 class="display-3 m-5 p-2 text-center"><%= link_to post.title, post %></h1>
+                <h1 class="display-3 m-5 p-2 text-center"><%= link_to post.title, controller: "posts", action: "show", id: post.id %></h1>
             </div>
             <div class="card-body">
                 <p class="text-justify"><%= post.content %></p>
@@ -10,9 +10,6 @@
             
             <div class="card-footer">
                 <p class="float-left">Posted by: <strong><%= User.find(post.user_id).email %></strong></p>
-                <% if user_signed_in? %>
-                    <p class="float-right"><%= link_to '<button class="btn btn-primary btn-sm ">Make a comment</button>'.html_safe, controller: "comments", action: "new", post_id: post.id %><p>
-                <% end %>   
             </div>
         </div>
     <% end %>

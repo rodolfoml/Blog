@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   root 'posts#index'
   resources :posts
   resources :comments
+
+  mount ActionCable.server => '/cable'
 end

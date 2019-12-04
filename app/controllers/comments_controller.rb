@@ -9,10 +9,11 @@ class CommentsController < ApplicationController
   def new
     @comment = Comment.new
     @comment.post_id = params[:post_id]
+    @comment.user_id = params[:user_id]
   end
 
   def create
-    @comment = Comment.new(post_id: params[:post_id], content: params[:comment][:content])
+    @comment = Comment.new(user_id: params[:user_id], post_id: params[:post_id], content: params[:comment][:content])
 
     if @comment.save
       redirect_to root_path, notice: 'The comment was created!'

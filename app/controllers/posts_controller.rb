@@ -19,6 +19,9 @@ class PostsController < ApplicationController
   end
 
   def create
+    env = Rails.env
+    return unless env.development? || env.test?
+
     @post = Post.new(user_id: params[:user_id], content: params[:post][:content], title: params[:post][:title])
 
     if @post.save
@@ -31,13 +34,8 @@ class PostsController < ApplicationController
   def edit; end
 
   def update
-<<<<<<< HEAD
        if @post.update(post_params)
   redirect_to @posti, noticie: 'Update successful'
-=======
-    if @post.update(content: params[:post][:content], title: params[:post][:title])
-      redirect_to @post, notice: 'Update successful'
->>>>>>> df24d48a1f57244c6e36e631c92832801c1e6f54
     else
       render 'edit'
     end

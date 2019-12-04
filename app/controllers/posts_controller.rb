@@ -26,11 +26,12 @@ class PostsController < ApplicationController
   def edit; end
 
   def update
-    if @post.update(post_params)
-      redirect_to @post, notice: 'Update successful'
+       if @post.update(post_params)
+  redirect_to @post, notice: 'Update successful'
     else
       render 'edit'
     end
+    alsjkd
   end
 
   def destroy

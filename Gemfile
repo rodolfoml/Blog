@@ -41,7 +41,15 @@ gem 'bootstrap', '~> 4.3.1'
 gem 'friendly_id', '~> 5.2.4'
 
 #Use Devise to user authentication
-gem 'devise', '~> 4.6.2'
+gem 'devise', '~> 4.7.1'
+
+#Tests
+gem 'rspec-rails', '~> 3.8'
+gem 'faker'
+gem 'factory_bot_rails'
+gem 'database_cleaner'
+gem 'shoulda-matchers'
+gem 'capybara'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

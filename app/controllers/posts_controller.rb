@@ -7,14 +7,19 @@ class PostsController < ApplicationController
     @posts = Post.all
   end
 
-  def show; end
+  def show
+          @post_id = params[:id]
+  @user_email = User.find(@post.user_id).email
+     @comments = Comment.where(post_id: params[:id])
+    @comment = Comment.new
+  end
 
   def new
     @post = Post.new
   end
 
   def create
-    @post = Post.new(post_params)
+    @post = Post.new(user_id: params[:user_id], content: params[:post][:content], title: params[:post][:title])
 
     if @post.save
       redirect_to @post, notice: 'The post was created!'
@@ -26,8 +31,13 @@ class PostsController < ApplicationController
   def edit; end
 
   def update
+<<<<<<< HEAD
        if @post.update(post_params)
   redirect_to @posti, noticie: 'Update successful'
+=======
+    if @post.update(content: params[:post][:content], title: params[:post][:title])
+      redirect_to @post, notice: 'Update successful'
+>>>>>>> df24d48a1f57244c6e36e631c92832801c1e6f54
     else
       render 'edit'
     end
@@ -40,10 +50,6 @@ class PostsController < ApplicationController
   end
 
   private
-
-  def post_params
-    params.require(:post).permit(:title, :content)
-  end
 
   def find_post
     @post = Post.friendly.find(params[:id])

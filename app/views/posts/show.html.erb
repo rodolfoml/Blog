@@ -9,11 +9,49 @@
         </div>
 
         <div class="card-footer">
-            <%= link_to '<button class="btn btn-primary btn-info float-right">Comments</button>'.html_safe, controller: "comments", action: "show", post_id: @post.id%>
-            <%= link_to '<button class="btn btn-primary btn-secondary float-right">Edit</button>'.html_safe, edit_post_path(@post) %>
-            <%= link_to '<button class="btn btn-primary btn-danger float-right">Delete</button>'.html_safe, @post, method: :delete, data: { confirm: "Are you sure?" } %>
+            <p class="float-left">Posted by: <strong><%= @user_email %></strong></p>
+            
+            <% if user_signed_in? %>                
+                <% if current_user.id == @post.user_id %>
+                    <%= link_to '<button class="btn btn-primary btn-secondary float-right">Edit</button>'.html_safe, edit_post_path(@post) %>
+                    <%= link_to '<button class="btn btn-primary btn-danger float-right">Delete</button>'.html_safe, @post, method: :delete, data: { confirm: "Are you sure?" } %>
+                <% end %>
+            <% end %>
         </div>
     </div>
+
+    <br><br>
+
+    <div class="card bg-light">
+        <div class="card-title">
+            <h3 class="display-6 m-5 p-2 text-center">Comments</h3>
+        </div>  
+    </div>
+    <div id="comments">
+        <% @comments.each do |comment| %>
+            <div class="card bg-light">
+                
+                <div class="card-body">
+                    <p><%= comment.content %></p>
+                </div>
+
+                <div class="card-footer">
+                    <p class="float-left">Posted by: <strong><%= User.find(comment.user_id).email %></strong></p>
+                    <% if user_signed_in? %>
+                        <% if current_user.id == comment.user_id %>
+                            <%= link_to '<button class="btn btn-primary btn-secondary float-right">Edit</button>'.html_safe, edit_comment_path(comment) %>
+                            <%= link_to '<button class="btn btn-primary btn-danger float-right">Delete</button>'.html_safe, comment, method: :delete, data: { confirm: "Are you sure?" } %>
+                        <% end %>
+                    <% end %>
+                </div>
+            </div>
+        <% end %>
+    </div>
+
+    <br><br>
+    <% if user_signed_in? %>
+        <%= render 'comments/form' %>
+    <% end %>   
     <br><br>
     <%= link_to '<button class="btn btn-primary btn-lg btn-block">Back</button>'.html_safe, root_path %>
 </div>

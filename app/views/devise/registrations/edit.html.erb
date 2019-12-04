@@ -1,0 +1,73 @@
+<div class="container">
+
+  <div class="card bg-light">
+    <div class="card-title">
+        <h1 class="display-3 m-5 p-2 text-center">Edit <%= resource_name.to_s.humanize %></h1>
+    </div>        
+
+    <div class="card-body">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+
+        <div class="field">
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label"><%= f.label :email, "Email: " %><br></label>
+            <div class="col-sm-10">
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Type the email here" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label"><%= f.label :password, "Password: " %></label>
+            <div class="col-sm-10">
+                <%= f.password_field :password, autocomplete: "new-password", placeholder: "Type the password here" %>
+                <i>(leave blank if you don't want to change it)</i>
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label"><%= f.label :password_confirmation, "Password Confirmation: " %></label>
+            <div class="col-sm-10">
+                <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Type the password confirmation here" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label"><%= f.label :current_password %> </label>
+            <div class="col-sm-10">
+                <%= f.password_field :current_password, autocomplete: "current-password", placeholder: "Type the current password here" %>
+                <i>(we need your current password to confirm your changes)</i>
+            </div>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button type="submit" class="btn btn-primary btn-lg float-right">Update</button>
+        </div>
+      <% end %>
+
+    </div>
+    
+    <br><br>
+
+    <div class="card bg-light">
+      <div class="card-title">
+          <h1 class="display-3 m-5 p-2 text-center float-center">Account Cancellation</h1>
+      </div> 
+      <div class="card-body">
+        <div class="actions">
+          <%=link_to '<button class="btn btn-primary btn-danger btn-block">CANCEL MY ACCOUNT</button>'.html_safe, registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <br><br>
+  <%= link_to '<button class="btn btn-primary btn-lg btn-block">Back</button>'.html_safe, root_path %>
+</div>
